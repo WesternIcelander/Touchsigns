@@ -1,0 +1,4 @@
+name: Touchsigns
+version: {VERSION}
+main: hk.siggi.bukkit.touchsigns.Touchsigns
+authors: [Siggi88]
