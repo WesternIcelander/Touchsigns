@@ -24,4 +24,7 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+	<build>
+		<finalName>Touchsigns</finalName>
+	</build>
 </project>
