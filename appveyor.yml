@@ -1,0 +1,16 @@
+version: '{build}'
+branches:
+  only:
+  - master
+skip_tags: true
+image: Ubuntu
+cache: /home/appveyor/.m2
+build_script:
+- sh: mvn clean package
+artifacts:
+- path: target/*.jar
+deploy:
+- provider: Environment
+  name: Siggi.io
+  on:
+    branch: master
