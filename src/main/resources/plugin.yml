@@ -1,4 +1,5 @@
 name: Touchsigns
 version: 1.0
+api-version: 1.14
 main: hk.siggi.bukkit.touchsigns.Touchsigns
 authors: [Siggi88]

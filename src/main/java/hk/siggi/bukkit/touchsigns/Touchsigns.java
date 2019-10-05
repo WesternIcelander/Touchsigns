@@ -57,7 +57,7 @@ public class Touchsigns extends JavaPlugin implements Listener {
 	public void interactWithSign(PlayerInteractEvent event) {
 		Block block = event.getClickedBlock();
 		Material material = block.getType();
-		if (material == Material.WALL_SIGN) {
+		if (isWallSign(material)) {
 			boolean rightClick = false;
 			Action action = event.getAction();
 			if (action == Action.LEFT_CLICK_BLOCK) {
@@ -154,6 +154,7 @@ public class Touchsigns extends JavaPlugin implements Listener {
 
 	/**
 	 * Start listening for Touchsign events.
+	 *
 	 * @param listener The listener to add.
 	 * @param plugin The plugin that the listener belongs to.
 	 */
@@ -171,6 +172,7 @@ public class Touchsigns extends JavaPlugin implements Listener {
 
 	/**
 	 * Stop listening for Touchsign events.
+	 *
 	 * @param listener The listener to remove.
 	 */
 	public void removeListener(TouchsignListener listener) {
@@ -191,6 +193,7 @@ public class Touchsigns extends JavaPlugin implements Listener {
 
 	/**
 	 * Remove all listeners belonging to a plugin.
+	 *
 	 * @param plugin The plugin to remove all listeners of.
 	 */
 	public void removeAllListeners(Plugin plugin) {
@@ -207,5 +210,20 @@ public class Touchsigns extends JavaPlugin implements Listener {
 	public void pluginDisableEvent(PluginDisableEvent event) {
 		Plugin plugin = event.getPlugin();
 		removeAllListeners(plugin);
+	}
+
+	private boolean isWallSign(Material material) {
+		switch (material) {
+			case ACACIA_WALL_SIGN:
+			case BIRCH_WALL_SIGN:
+			case DARK_OAK_WALL_SIGN:
+			case JUNGLE_WALL_SIGN:
+			case OAK_WALL_SIGN:
+			case SPRUCE_WALL_SIGN:
+			case LEGACY_WALL_SIGN:
+				return true;
+			default:
+				return false;
+		}
 	}
 }
