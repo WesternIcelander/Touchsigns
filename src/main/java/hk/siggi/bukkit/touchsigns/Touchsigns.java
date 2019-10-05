@@ -31,6 +31,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
+import org.bukkit.block.data.type.WallSign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -70,7 +71,7 @@ public class Touchsigns extends JavaPlugin implements Listener {
 			if (state instanceof Sign) {
 				Sign sign = (Sign) state;
 				Player player = event.getPlayer();
-				org.bukkit.material.Sign signData = (org.bukkit.material.Sign) sign.getData();
+				WallSign signData = (WallSign) sign.getBlockData();
 				BlockFace facing = signData.getFacing();
 				if (facing != event.getBlockFace()) {
 					return;
@@ -81,7 +82,7 @@ public class Touchsigns extends JavaPlugin implements Listener {
 				boolean sneaking = player.isSneaking();
 
 				double playerX = location.getX();
-				double playerY = location.getY() + (sneaking ? 0.54 : 0.62); // add eyes position
+				double playerY = location.getY() + (sneaking ? 0.28 : 0.62); // add eyes position
 				double playerZ = location.getZ();
 
 				double yaw = location.getYaw() * (Math.PI / 180);
