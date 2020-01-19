@@ -6,7 +6,7 @@ skip_tags: true
 image: Ubuntu
 cache: /home/appveyor/.m2
 build_script:
-- sh: mvn clean package
+- sh: mvn clean source:jar javadoc:jar package -Dmaven.test.skip=true
 artifacts:
 - path: target/*.jar
 deploy:
