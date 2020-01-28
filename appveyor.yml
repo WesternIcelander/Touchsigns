@@ -8,6 +8,7 @@ cache: /home/appveyor/.m2
 build_script:
 - sh: mvn clean source:jar javadoc:jar package -Dmaven.test.skip=true
 artifacts:
+- path: pom.xml
 - path: target/*.jar
 deploy:
 - provider: Environment
