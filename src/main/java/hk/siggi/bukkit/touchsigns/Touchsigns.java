@@ -33,6 +33,7 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
 import org.bukkit.block.data.type.WallSign;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -78,7 +79,7 @@ public class Touchsigns extends JavaPlugin implements Listener {
 				}
 				Location location = player.getLocation();
 
-				boolean cancelled = event.isCancelled();
+				boolean cancelled = event.useInteractedBlock() == Event.Result.DENY;
 				boolean sneaking = player.isSneaking();
 
 				double playerX = location.getX();
