@@ -25,6 +25,8 @@ package hk.siggi.bukkit.touchsigns;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -214,18 +216,17 @@ public class Touchsigns extends JavaPlugin implements Listener {
 		removeAllListeners(plugin);
 	}
 
-	private boolean isWallSign(Material material) {
-		switch (material) {
-			case ACACIA_WALL_SIGN:
-			case BIRCH_WALL_SIGN:
-			case DARK_OAK_WALL_SIGN:
-			case JUNGLE_WALL_SIGN:
-			case OAK_WALL_SIGN:
-			case SPRUCE_WALL_SIGN:
-			case LEGACY_WALL_SIGN:
-				return true;
-			default:
-				return false;
+	private static final Set<Material> wallSignMaterials = new HashSet<>();
+
+	static {
+		for (Material material : Material.values()) {
+			if (material.name().toUpperCase().endsWith("_WALL_SIGN")) {
+				wallSignMaterials.add(material);
+			}
 		}
+	}
+
+	private static boolean isWallSign(Material material) {
+		return wallSignMaterials.contains(material);
 	}
 }
